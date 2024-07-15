@@ -2,8 +2,6 @@ import System.IO
 import System.Environment (getArgs)
 import Control.Exception ( throw, Exception )
 import Control.Monad ( when, unless )
---import Data.Char (isSpace)
-import Data.List ( intercalate )
 
 -- Error handling
 import Data.Typeable ( Typeable )
