@@ -59,6 +59,15 @@ parseArgs strs = helper strs [] "" []
                 | otherwise     -> helper as (argv ++ [a])    flags                    longFlags
             []                  -> (argv, flags, longFlags)
 
+
+-- Escapes newlines and tabs into \n and \t in a string
+escaper :: String -> String
+escaper = concatMap esc
+    where
+        esc '\n'    = "\\n"
+        esc '\t'    = "\\t"
+        esc c       = [c]
+
 main :: IO ()
 main = do
     args <- getArgs
@@ -82,4 +91,4 @@ main = do
 
         rawText <- readFile filePath
 
-        putStr rawText
+        putStr (escaper rawText)
