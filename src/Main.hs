@@ -58,12 +58,13 @@ parseArgs strs = helper strs [] "" []
             []                  -> (argv, flags, longFlags)
 
 
--- Escapes newlines and tabs into \n and \t in a string
+-- Escapes desired characters
 escaper :: String -> String
 escaper = concatMap esc
     where
         esc '\n'    = "\\n"
         esc '\t'    = "\\t"
+        esc '\"'    = "\\\""
         esc c       = [c]
 
 main :: IO ()
